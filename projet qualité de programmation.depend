@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1732536921 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\main.cpp
+	<iostream>
+	"Terrain.h"
+	<iostream>
+	"Terrain.h"
+	"Robot.h"
+	"AlgoMainDroite.h"
+	"AlgoPledge.h"
+
+1732536775 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\terrain.cpp
+	"Terrain.h"
+
+1732536755 c:\users\pc\documents\projet qualité\projet qualité de programmation\terrain.h
+	<vector>
+	<string>
+	<iostream>
+
+1732537348 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\robot.cpp
+	"Robot.h"
+	<iostream>
+
+1732537470 c:\users\pc\documents\projet qualité\projet qualité de programmation\robot.h
+	<vector>
+	<iostream>
+	"Terrain.h"
+
+1732536474 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\algomaindroite.cpp
+	"AlgoMainDroite.h"
+	<iostream>
+
+1732536455 c:\users\pc\documents\projet qualité\projet qualité de programmation\algomaindroite.h
+	"Robot.h"
+
+1732536571 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\algopledge.cpp
+	"AlgoPledge.h"
+	<iostream>
+
+1732536552 c:\users\pc\documents\projet qualité\projet qualité de programmation\algopledge.h
+	"Robot.h"
+
