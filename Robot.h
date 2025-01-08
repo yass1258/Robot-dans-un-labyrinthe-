@@ -1,47 +1,55 @@
 #ifndef ROBOT_H_INCLUDED
 #define ROBOT_H_INCLUDED
 
-#include <vector>
-#include <iostream>
 #include "Terrain.h"
+#include "Position.h"
+#include "Direction.h"
+#include <iostream>
 
-// Définir les directions du robot
-enum Direction { HAUT, DROITE, BAS, GAUCHE };
+class Position;
+class Terrain;
 
 class Robot {
 public:
     // Constructeur
-    Robot(Terrain &terrain);
+    Robot(Terrain &terrain, const Position &pos = Position(0, 0), Direction dir = DROITE);
 
-    // Déplacements
+    // Déplacement
     void avancer();
     void tournerGauche();
     void tournerDroite();
-    void sePositionner(int ligne, int colonne, Direction direction);
+
+    // Gestion de la position
+    void setPositionner(const Position &pos, Direction dir);
+    void setPositionner(int ligne, int colonne, Direction dir);
+    Position getPosition() const;
+    Direction getDirection() const;
+
 
     // Détection des obstacles
     bool devantMur() const;
     bool aGaucheMur() const;
     bool aDroiteMur() const;
+    char caseDevant() const;
+    bool murDansDirectionActuelle() const;
+    // État du robot
+    bool estArrive() const;
 
-    //si le rebot est arrivé a la fin du labyrinth
-     bool estArrive() const;
-    // Affichage de la position
+    // Affichage
     void afficherPosition() const;
-
-    // Algorithmes de sortie
-    void sortirMainDroite();
-    void sortirPledge();
-    void rafraichirTerrain();
-
-    int obtenirLigne() const;
-    int obtenirColonne() const;
+    Position obtenirPosition() const;
     Terrain& obtenirTerrain();
-private:
-    Terrain& terrain;
-    int ligne, colonne;
-    Direction direction;
-};
 
+private:
+    Terrain &d_terrain;
+    Position  d_position;
+    Direction d_direction;
+
+    friend class Position;
+    friend class AfficheurRobot;
+
+    // Méthodes privées
+    void mettreAJourTerrain();
+};
 
 #endif // ROBOT_H_INCLUDED

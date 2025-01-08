@@ -6,26 +6,7 @@
 
 int main() {
     Terrain terrain;
-
-    // Créer un terrain simple 5x5
-    terrain.creer(5, 5);
-
-    // Ajouter des murs
-    terrain.placerMur(1, 1);
-    terrain.placerMur(1, 2);
-    terrain.placerMur(2, 2);
-
-    // Définir les cases départ et arrivée
-    terrain.definirDepart(0, 0);
-    terrain.definirArrivee(4, 4);
-
-    // Afficher le terrain initial
-    std::cout << "Terrain initial :\n";
-    terrain.afficher(nullptr); // Affiche le terrain sans robot
-
-    // Créer un robot
-    Robot robot(terrain);
-    robot.sePositionner(0, 0, DROITE);
+    std::string nomFichier;
 
     // Demander à l'utilisateur de choisir un algorithme
     std::cout << "Choisissez un algorithme pour sortir du labyrinthe :\n";
@@ -34,14 +15,41 @@ int main() {
     int choix;
     std::cin >> choix;
 
+    // Charger le fichier correspondant
     if (choix == 1) {
+        nomFichier = "labyrinthe.txt";
+    } else if (choix == 2) {
+        nomFichier = "labyrinthe.txt";
+    } else {
+        std::cerr << "Choix invalide. Fin du programme.\n";
+        return 1;
+    }
+
+    // Importer le labyrinthe
+    terrain.importerDepuisFichier(nomFichier);
+    std::cout << "Labyrinthe importé depuis " << nomFichier << " :\n";
+    terrain.afficher();
+
+    // Positionner le robot sur la case (1, 1)
+    Position positionDepart(1, 1);
+    Robot robot(terrain, positionDepart, DROITE);
+
+    std::cout << "Robot initialisé à la position : ("
+              << positionDepart.getX() << ", "
+              << positionDepart.getY() << ") direction : DROITE\n";
+
+    // Affichage initial avec le robot
+    terrain.afficher(&robot);
+
+    // Exécuter l'algorithme choisi
+    if (choix == 1) {
+        std::cout << "Exécution de l'algorithme de la main droite...\n";
         AlgoMainDroite algo(robot);
         algo.executer();
     } else if (choix == 2) {
+        std::cout << "Exécution de l'algorithme de Pledge...\n";
         AlgoPledge algo(robot);
         algo.executer();
-    } else {
-        std::cout << "Choix invalide.\n";
     }
 
     return 0;

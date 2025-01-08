@@ -5,11 +5,11 @@
 
 class AlgoPledge {
 public:
-    explicit AlgoPledge(Robot& robot);
-    void executer();
-
+    explicit AlgoPledge(Robot& r);
+    void executer(); // Exécute l'algorithme de Pledge
 private:
     Robot& robot;
+    int compteurOrientation; // Compteur d'orientation
 };
 
 #endif // ALGOPLEDGE_H_INCLUDED

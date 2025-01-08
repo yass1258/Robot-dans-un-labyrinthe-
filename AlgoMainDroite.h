@@ -6,6 +6,7 @@
 class AlgoMainDroite {
 public:
     explicit AlgoMainDroite(Robot& robot);
+    int calculerDistance(const Position& pos1, const Position& pos2) const;
     void executer();
 
 private:
