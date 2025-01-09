@@ -1,33 +1,34 @@
 #include "AlgoMainDroite.h"
+#include "Deplacement.h"
 #include <iostream>
+#include "Capteur.h"
 
 AlgoMainDroite::AlgoMainDroite(Robot& robot) : robot(robot) {}
 
 void AlgoMainDroite::executer() {
-    // Tant que le robot n'est pas arrivé à la sortie
+    Deplacement deplacement(robot);
+    Capteur capteur(robot);
     while (!robot.estArrive()) {
-        // Appliquer l'algorithme de la main droite
-        if (!robot.aDroiteMur()) {
-            robot.tournerDroite();
-            robot.avancer();
-        } else if (!robot.devantMur()) {
-            robot.avancer();
-        } else {
-            robot.tournerGauche();
+        if (capteur.caseDevant() == 'A') {
+            deplacement.avancer();
+            std::cout << "Le robot est arrivé à la sortie avec l'algorithme de la main droite !\n";
+            return;
         }
 
-        // Afficher le terrain après chaque mouvement
-        robot.obtenirTerrain().afficher();
-        std::cout << "Position actuelle : (" << robot.obtenirPosition().getX()
-                  << ", " << robot.obtenirPosition().getY() << ") Direction : "
-                  << robot.getDirection() << "\n";
-        if (robot.caseDevant() == 'A') {
-            std::cout << "Le robot est juste avant la case d'arrivée. Arrêt.\n";
-            break; // Sortir de la boucle
+        if (!capteur.devantMur()) {
+            deplacement.avancer();
+        } else if (!capteur.aDroiteMur()) {
+            deplacement.tournerDroite();
+            deplacement.avancer();
+        } else {
+            deplacement.tournerGauche();
         }
+
+        robot.obtenirTerrain().afficher(&robot);
+        std::cout << "Position actuelle : (" << robot.obtenirPosition().getX() << ", "
+              << robot.obtenirPosition().getY() << ") Direction : "
+              << obtenirDirectionTexte(robot.getDirection()) << "\n";
     }
 
-
-
-
 }
+

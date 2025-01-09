@@ -53,16 +53,17 @@
 	<fstream>
 	<sstream>
 
-1736258313 c:\users\pc\documents\projet qualité\projet qualité de programmation\terrain.h
+1736415697 c:\users\pc\documents\projet qualité\projet qualité de programmation\terrain.h
 	<vector>
 	<string>
 	<iostream>
 	"Position.h"
 	"Robot.h"
+	"Constantes.h"
 
 1735940194 c:\users\pc\documents\projet qualité\projet qualité de programmation\position.h
 
-1736257593 c:\users\pc\documents\projet qualité\projet qualité de programmation\robot.h
+1736337362 c:\users\pc\documents\projet qualité\projet qualité de programmation\robot.h
 	"Terrain.h"
 	"Position.h"
 	"Direction.h"
@@ -76,7 +77,7 @@
 	"Terrain.h"
 	"Robot.h"
 
-1732536455 c:\users\pc\documents\projet qualité\projet qualité de programmation\algomaindroite.h
+1736271346 c:\users\pc\documents\projet qualité\projet qualité de programmation\algomaindroite.h
 	"Robot.h"
 
 1736266455 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\algopledgetest.cpp
@@ -89,13 +90,17 @@
 1736247917 c:\users\pc\documents\projet qualité\projet qualité de programmation\algopledge.h
 	"Robot.h"
 
-1736262755 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\robottest.cpp
+1736429060 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\robottest.cpp
 	"doctest.h"
 	"Robot.h"
 	"Terrain.h"
+	"Deplacement.h"
+	"Capteur.h"
+	"Constantes.h"
 
-1736258652 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\terrain.cpp
+1736429226 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\terrain.cpp
 	"Terrain.h"
+	"Constantes.h"
 	<fstream>
 	<stdexcept>
 	<iostream>
@@ -110,24 +115,28 @@
 
 1735750408 c:\users\pc\documents\projet qualité\projet qualité de programmation\observateurrobot.h
 
-1736257688 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\algomaindroite.cpp
+1736418195 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\algomaindroite.cpp
 	"AlgoMainDroite.h"
+	"Deplacement.h"
 	<iostream>
+	"Capteur.h"
 
-1736252000 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\algopledge.cpp
+1736417684 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\algopledge.cpp
 	"AlgoPledge.h"
 	<iostream>
 	"Robot.h"
+	"Deplacement.h"
+	"Capteur.h"
 
 1735938587 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\direction.cpp
 	"Direction.h"
 
 1735750329 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\observateurrobot.cpp
 
-1735849643 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\position.cpp
+1736270178 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\position.cpp
 	"Position.h"
 
-1736266654 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\robot.cpp
+1736337360 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\robot.cpp
 	"Robot.h"
 
 1735755158 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\statistiquesrobot.cpp
@@ -136,4 +145,43 @@
 
 1735755101 c:\users\pc\documents\projet qualité\projet qualité de programmation\statistiquesrobot.h
 	"ObservateurRobot.h"
+
+1736415890 c:\users\pc\documents\projet qualité\projet qualité de programmation\deplacement.h
+	"Robot.h"
+	"Constantes.h"
+
+1736415952 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\deplacement.cpp
+	"Deplacement.h"
+	"Constantes.h"
+
+1736348381 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\terrainfichier.cpp
+	"TerrainFichier.h"
+	<fstream>
+	<iostream>
+	<stdexcept>
+
+1736348352 c:\users\pc\documents\projet qualité\projet qualité de programmation\terrainfichier.h
+	"Terrain.h"
+	<string>
+
+1736352308 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\terrainsauvegarde.cpp
+	"TerrainSauvegarde.h"
+	<fstream>
+	<iostream>
+
+1736351872 c:\users\pc\documents\projet qualité\projet qualité de programmation\terrainsauvegarde.h
+	"Terrain.h"
+	<string>
+
+1736418222 c:\users\pc\documents\projet qualité\projet qualité de programmation\constantes.h
+	"Direction.h"
+
+1736416390 c:\users\pc\documents\projet qualité\projet qualité de programmation\capteur.h
+	"Robot.h"
+
+1736416411 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\capteur.cpp
+	"Capteur.h"
+	"Constantes.h"
+
+1736415647 source:c:\users\pc\documents\projet qualité\projet qualité de programmation\constantes.cpp
 

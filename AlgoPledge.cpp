@@ -1,13 +1,19 @@
 #include "AlgoPledge.h"
 #include <iostream>
 #include "Robot.h"
+#include "Deplacement.h"
+#include "Capteur.h"
+
+
 AlgoPledge::AlgoPledge(Robot& r) : robot(r), compteurOrientation(0) {}
 
+void AlgoPledge::executer() {
+Deplacement deplacement(robot); // Utilisation de la classe Deplacement
 
-    void AlgoPledge::executer() {
     while (!robot.estArrive()) { // Continue tant que le robot n'a pas atteint la sortie
-        std::cout << "Position actuelle : (" << robot.obtenirPosition().getX() << ", " << robot.obtenirPosition().getY()
-                  << "), Direction : " << robot.getDirection() << ", Compteur : " << compteurOrientation << "\n";
+        std::cout << "Position actuelle : (" << robot.obtenirPosition().getX() << ", "
+                  << robot.obtenirPosition().getY() << "), Direction : " << robot.getDirection()
+                  << ", Compteur : " << compteurOrientation << "\n";
 
         // Si la case devant est l'arrivée, le robot s'arrête
         if (robot.caseDevant() == 'A') {
@@ -15,21 +21,21 @@ AlgoPledge::AlgoPledge(Robot& r) : robot(r), compteurOrientation(0) {}
             break; // Sortir de la boucle
         }
 
-        if (compteurOrientation == 0 && !robot.devantMur()) {
+        if (compteurOrientation == 0 && !deplacement.devantMur()) {
             std::cout << "Avancer tout droit.\n";
-            robot.avancer();
+            deplacement.avancer();
         } else {
             // Sinon, suivre le mur
             if (!robot.aDroiteMur()) {
                 std::cout << "Tourner à droite.\n";
-                robot.tournerDroite();
+                deplacement.tournerDroite();
                 compteurOrientation--;
-            } else if (!robot.devantMur()) {
+            } else if (!deplacement.devantMur()) {
                 std::cout << "Avancer en suivant le mur.\n";
-                robot.avancer();
+                deplacement.avancer();
             } else {
                 std::cout << "Tourner à gauche.\n";
-                robot.tournerGauche();
+                deplacement.tournerGauche();
                 compteurOrientation++;
             }
         }
@@ -39,4 +45,4 @@ AlgoPledge::AlgoPledge(Robot& r) : robot(r), compteurOrientation(0) {}
     }
 
     std::cout << "Le robot a atteint la sortie avec l'algorithme de Pledge !\n";
-    }
+}

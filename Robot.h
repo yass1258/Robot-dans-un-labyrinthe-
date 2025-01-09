@@ -14,18 +14,16 @@ public:
     // Constructeur
     Robot(Terrain &terrain, const Position &pos = Position(0, 0), Direction dir = DROITE);
 
-    // Déplacement
-    void avancer();
-    void tournerGauche();
-    void tournerDroite();
+
 
     // Gestion de la position
     void setPositionner(const Position &pos, Direction dir);
     void setPositionner(int ligne, int colonne, Direction dir);
     Position getPosition() const;
     Direction getDirection() const;
+    void setDirection(Direction nouvelleDirection);
 
-
+void setPosition(int x, int y);
     // Détection des obstacles
     bool devantMur() const;
     bool aGaucheMur() const;

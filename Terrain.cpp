@@ -1,4 +1,5 @@
 #include "Terrain.h"
+#include "Constantes.h"
 #include <fstream> // Assure l'accès aux classes std::ifstream et std::ofstream
 #include <stdexcept> // Pour lever des exceptions en cas d'erreur
 #include <iostream>
@@ -68,16 +69,27 @@ void Terrain::sauvegarderDansFichier(const std::string& nomFichier) const {
     fichier.close();
 }
 
+
+    void Terrain::creer() {
+    for (int i = 0; i < d_lignes; ++i) {
+        for (int j = 0; j < d_colonnes; ++j) {
+            if (i == 0 || i == d_lignes - 1 || j == 0 || j == d_colonnes - 1) {
+                d_grille[i][j] = 'X';
+            }
+        }
+    }
+}
+
 void Terrain::creer(int lignes, int colonnes) {
     d_lignes = lignes;
     d_colonnes = colonnes;
-    d_grille.assign(lignes, std::vector<char>(colonnes, '.')); // Initialise avec des cases vides ('.')
+    d_grille.assign(lignes, std::vector<char>(colonnes, VIDE)); // Initialise avec des cases vides (VIDE)
 
     // Ajouter des murs tout autour
     for (int i = 0; i < d_lignes; ++i) {
         for (int j = 0; j < d_colonnes; ++j) {
             if (i == 0 || i == d_lignes - 1 || j == 0 || j == d_colonnes - 1) {
-                d_grille[i][j] = 'X'; // Mur
+                d_grille[i][j] = MUR; // Mur
             }
         }
     }
@@ -85,7 +97,7 @@ void Terrain::creer(int lignes, int colonnes) {
 
 
 // Définir la case de départ
-/*void Terrain::definirDepart(int ligne, int colonne) {
+void Terrain::definirDepart(int ligne, int colonne) {
 
     if (ligne >= 0 && ligne < d_lignes && colonne >= 0 && colonne < d_colonnes) {
         if (d_grille[ligne][colonne] == 'X') {
@@ -95,9 +107,9 @@ void Terrain::creer(int lignes, int colonnes) {
         d_grille[ligne][colonne] = 'D'; // Départ
     }
 }
-*/
+
 // Définir la case d'arrivée
-/*void Terrain::definirArrivee(int ligne, int colonne) {
+void Terrain::definirArrivee(int ligne, int colonne) {
 
     if (ligne >= 0 && ligne < d_lignes && colonne >= 0 && colonne < d_colonnes) {
         if (d_grille[ligne][colonne] == 'X') {
@@ -106,7 +118,7 @@ void Terrain::creer(int lignes, int colonnes) {
         }
         d_grille[ligne][colonne] = 'A'; // Arrivée
     }
-}*/
+}
 
 
 
@@ -144,6 +156,9 @@ int Terrain::getLignes() const {
 
 int Terrain::getColonnes() const {
     return d_colonnes;
+}
+const std::vector<std::vector<char>>& Terrain::getGrille() const {
+    return d_grille;
 }
 
 char Terrain::obtenirCase(int ligne, int colonne) const {

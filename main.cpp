@@ -19,7 +19,7 @@ int main() {
     if (choix == 1) {
         nomFichier = "labyrinthe.txt";
     } else if (choix == 2) {
-        nomFichier = "labyrinthe.txt";
+        nomFichier = "labyrinthe2.txt";
     } else {
         std::cerr << "Choix invalide. Fin du programme.\n";
         return 1;

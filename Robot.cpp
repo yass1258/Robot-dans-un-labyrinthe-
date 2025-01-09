@@ -6,68 +6,7 @@ Robot::Robot(Terrain &terrain, const Position &pos, Direction dir)
     mettreAJourTerrain();
 }
 
-// Déplacement
-void Robot::avancer() {
 
-    // Calcul de la nouvelle position
-    int nouvelleLigne = d_position.getX();
-    int nouvelleColonne = d_position.getY();
-
-    // Calculer la nouvelle position
-    switch (d_direction) {
-        case HAUT:
-            nouvelleLigne --;
-            break;
-        case DROITE:
-            nouvelleColonne ++;
-            break;
-        case BAS:
-            nouvelleLigne ++;
-            break;
-        case GAUCHE:
-            nouvelleColonne --;
-            break;
-    }
-
-    // Vérifie si la case devant est la case d'arrivée
-    if (d_terrain.obtenirCase(nouvelleLigne, nouvelleColonne) == 'A') {
-        std::cout << "Le robot est juste avant la case d'arrivée. Arrêt.\n";
-        return; // Stoppe le déplacement
-    }
-
-    // Vérifie si le mouvement est valide
-    if (nouvelleLigne >= 0 && nouvelleLigne < d_terrain.getLignes() &&
-        nouvelleColonne >= 0 && nouvelleColonne < d_terrain.getColonnes() &&
-        d_terrain.obtenirCase(nouvelleLigne, nouvelleColonne) != 'X') {
-
-        // Efface l'ancienne position
-        d_terrain.modifierCase(d_position.getX(), d_position.getY(), '.');
-
-        // Met à jour la position
-        d_position.setX(nouvelleLigne);
-        d_position.setY(nouvelleColonne);
-
-        // Met à jour la grille avec le robot
-        d_terrain.modifierCase(d_position.getX(), d_position.getY(), 'R');
-    }
-    else {
-        std::cout << "Mouvement bloqué par un mur ou hors limites.\n";
-    }
-}
-
-
-
-
-void Robot::tournerGauche() {
-    d_direction = static_cast<Direction>((d_direction + 3) % 4);
-    afficherPosition();
-}
-
-void Robot::tournerDroite() {
-    d_direction = static_cast<Direction>((d_direction + 1) % 4);
-    afficherPosition();
-
-}
 
 // Gestion de la position
 void Robot::setPositionner(const Position &pos, Direction dir) {
@@ -90,6 +29,10 @@ Position Robot::getPosition() const {
 Direction Robot::getDirection() const {
     return d_direction;
 }
+void Robot::setDirection(Direction nouvelleDirection) {
+    d_direction = nouvelleDirection; // Met à jour l'attribut direction
+}
+
 
 // Détection des obstacles
 bool Robot::devantMur() const {
@@ -209,6 +152,9 @@ bool Robot::murDansDirectionActuelle() const {
             return colonne == 0 || d_terrain.obtenirCase(ligne, colonne - 1) == 'X';
     }
     return true; // Par défaut, considère qu'il y a un mur
+}
+void Robot::setPosition(int x, int y) {
+    d_position.setPosition(x, y); // Utilise la méthode de la classe Position pour mettre à jour la position
 }
 // Méthodes privées
 void Robot::mettreAJourTerrain() {
